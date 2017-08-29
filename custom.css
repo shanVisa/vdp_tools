@@ -1,0 +1,198 @@
+.bwizard-steps {
+    display: inline-block;
+	margin: 0; 
+	padding: 0;
+	background: #fff; 
+}
+
+.bwizard-steps .active {
+	color: #fff;
+	background:  #000099; 
+}
+
+.bwizard-steps .active:after {
+	border-left-color:  #000099; 
+}
+	
+.bwizard-steps .active a {
+	color: #fff;
+	cursor: default;
+}
+	
+.bwizard-steps .label {
+	position: relative;
+	top: -1px;
+	margin: 0 5px 0 0; 
+	padding: 1px 5px 2px; 
+}
+	
+.bwizard-steps .active .label {
+	background-color: #333;
+}
+	
+.bwizard-steps li {
+	display: inline-block; 
+	position: relative;
+	margin-right: 5px;
+	padding: 12px 17px 10px 30px;
+	*display: inline;
+	*padding-left: 17px;
+	background: #efefef;
+	line-height: 18px;
+	list-style: none;
+	zoom: 1; 
+}
+	
+.bwizard-steps li:first-child {
+	padding-left: 12px;
+	-moz-border-radius: 4px 0 0 4px;
+	-webkit-border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px; 
+}
+	
+.bwizard-steps li:first-child:before {
+	border: none;
+}
+	
+.bwizard-steps li:last-child {
+	margin-right: 0;
+	-moz-border-radius: 0 4px 4px 0;
+	-webkit-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0; 
+}
+	
+.bwizard-steps li:last-child:after {
+	border: none;
+}
+	
+.bwizard-steps li:before {
+	position: absolute;
+	left: 0; top: 0;
+	height: 0; width: 0;
+	border-bottom: 20px inset transparent;
+	border-left: 20px solid #fff;
+	border-top: 20px inset transparent;
+	content: "";
+}
+	
+.bwizard-steps li:after {
+	position: absolute;
+	right: -20px; top: 0;
+	height: 0; width: 0;
+	border-bottom: 20px inset transparent;
+	border-left: 20px solid #efefef;
+	border-top: 20px inset transparent;
+	content: "";
+	z-index: 2; 
+}
+	
+.bwizard-steps a {
+	color: #333; 
+}
+	
+.bwizard-steps a:hover {
+	text-decoration: none;
+}
+
+.bwizard-steps.clickable li:not(.active) {
+	cursor: pointer;
+}
+
+.bwizard-steps.clickable li:hover:not(.active) {
+	background: #ccc;
+}
+
+.bwizard-steps.clickable li:hover:not(.active):after {
+	border-left-color: #ccc; 
+}
+
+.bwizard-steps.clickable li:hover:not(.active) a {
+	color: #08c; 
+}
+
+.circular_label{
+	-moz-border-radius: 20px;
+    border-radius: 20px;
+	border-color:#ffcc00;
+    background-color:#ffcc00;
+	color:white;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-size:1.3em;
+	
+}
+
+.text_fields_heading{
+	font-size:0.8em;
+}
+
+.red_text{
+	color:red;
+	display:inline;
+}
+
+.blue_text{
+	color: #3498DB;
+	display: inline;
+}
+
+.dark_blue_text{
+	color: #1565C0;
+}
+
+.grey_text{
+	color:#7F8C8D;
+	display: inline;
+}
+
+.green_text{
+	color: #2ECC71;
+	display:inline;
+}
+
+.inside_well_text{
+	font-size:0.8em;
+}
+
+.com_text{
+	font-family: "Courier New";
+}
+
+.modal_header_css{
+	background-color :  #000099;
+	color : #fff;
+}
+
+.modal_body_css{
+	background-color :  #ffcc00;
+	
+}
+
+.modal_footer_css{
+	background-color :  #000099;
+	color : #fff;
+}
+
+.input-validation-error {
+        border: 1px solid red !important;
+ 
+}
+
+@media (max-width: 480px) { 
+	/* badges only on small screens */
+	.bwizard-steps li:after,
+	.bwizard-steps li:before {
+		border: none; 
+	}
+	
+	.bwizard-steps li,
+	.bwizard-steps li.active,
+	.bwizard-steps li:first-child,
+	.bwizard-steps li:last-child {
+		margin-right: 0;
+		padding: 0;
+		background-color: transparent; 
+	}
+}
