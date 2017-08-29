@@ -6,4 +6,4 @@ This wizard does not generate any files physically.
 To Run: 
 1. Download this repository in to any folder (and unzip if it is zipped)
 2. Open cert_wizard_v1.html file from any browser.
-3. Follow the instructions you would be displayed upon opening the file.
+3. Follow the instructions that it would display upon opening the file in each step.
