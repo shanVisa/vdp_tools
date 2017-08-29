@@ -127,29 +127,30 @@
 		if ((email == "") || (fqdn == "") || (org == "") || (orgUnit == "") || ( cc == "") || (state == "") || ( loc == "" ) || ( keyAndStorePass == "" )){
 			
 			showHideAlert("ERROR", 5, true, "Some of values are blank. Please go back to Tab (Page) 2 and fill them.");
-					
+			$("#CSRcomsPanel").hide();
 			return;
 		}
 		
 		if ( uuid == "" ) {
 			showHideAlert("ERROR", 5, true, "UUID value can not be blank. Please fill it in, in Page 3.");
-					
+			$("#CSRcomsPanel").hide();
 			return;
 		}
 		
 		if(filePath.indexOf("fakepath") > -1){
 			showHideAlert("ERROR", 5, true, "Please key in the files path manually as your browser does not show the actual path in Page 4.");
-					
+			$("#CSRcomsPanel").hide();	
 			return;
 		}
 		
 		if(keyAndStorePass.length<6){
 			showHideAlert("ERROR", 5, true, "The password length must be at least 6 characters long. Please go back to page 2 and key in a valid password");
-					
+			$("#CSRcomsPanel").hide();
 			return;
 		}
 		
 		if(!validateCSRInputDataFields()){
+			$("#CSRcomsPanel").hide();
 			return;
 		}
 		
@@ -399,6 +400,11 @@ $(document).ready(function() {
 			if(selectedEnv === undefined && currentTab > 1){
 				alert("Please select an environment");
 				$('#tab1').tab('show');
+			}
+			
+			if(currentTab != 5){
+				$("#CSRcomsPanel").hide();
+				$("#JKScomsPanel").hide();
 			}
 			
 			if(currentTab == 2){
