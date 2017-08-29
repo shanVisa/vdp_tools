@@ -122,6 +122,10 @@
 		var keyAndStorePass = $("#pg2_csr_pass").val().trim();
 		var filePath = $("#txtFilePath").val().trim();
 		
+		var inputRegEx = /[^a-zA-Z0-9-.\s\-\/]/;
+		
+		
+		
 		hideAllAlerts(5);
 		
 		if ((email == "") || (fqdn == "") || (org == "") || (orgUnit == "") || ( cc == "") || (state == "") || ( loc == "" ) || ( keyAndStorePass == "" )){
@@ -153,6 +157,50 @@
 			$("#CSRcomsPanel").hide();
 			return;
 		}
+		
+		/* validate for special characters */
+		
+		if(inputRegEx.test(fqdn)){
+			showHideAlert("ERROR", 5, true, "Fully Qualified Domain Name contains some invalid characters. Please go back to page 2 and correct it.");
+			return;
+		}
+		
+		if(inputRegEx.test(org)){
+			showHideAlert("ERROR", 5, true, "Organization Name contains some invalid characters. Please go back to page 2 and correct it.");
+			return;
+		}
+		
+		if(inputRegEx.test(orgUnit)){
+			showHideAlert("ERROR", 5, true, "Organization Unit Name contains some invalid characters. Please go back to page 2 and correct it.");
+			return;
+		}
+		
+		if(inputRegEx.test(cc)){
+			showHideAlert("ERROR", 5, true, "Country Code contains some invalid characters. Please go back to page 2 and correct it.");
+			return;
+		}
+		
+		if(inputRegEx.test(state)){
+			showHideAlert("ERROR", 5, true, "State (or region) contains some invalid characters. Please go back to page 2 and correct it.");
+			return;
+		}
+		
+		if(inputRegEx.test(loc)){
+			showHideAlert("ERROR", 5, true, "Location (City name) contains some invalid characters. Please go back to page 2 and correct it.");
+			return;
+		}
+		
+		if(inputRegEx.test(keyAndStorePass)){
+			showHideAlert("ERROR", 5, true, "Password for the private key (and store [optional]) contains some invalid characters. Please go back to page 2 and correct it.");
+			return;
+		}
+		
+		if(inputRegEx.test(uuid)){
+			showHideAlert("ERROR", 5, true, "CSR UID contains some invalid characters. Please go back to page 3 and correct it.");
+			return;
+		}
+		
+		/* Start replacing place holders with actual valued user has keyed in */
 		
 		var jksKeyStoreComTemplate = 'keytool -genkeypair -alias client -keyalg RSA -keysize 2048 -keystore [#filepath]' + selectedEnv + '_clientkeystore.jks -storepass [#password] -keypass [#password] -dname "CN=[#commonName], OU=[#OrgUnit], O=[#OrgName], L=[#Location], ST=[#State], C=[#CC], UID=[#uuid]-' + selectedEnv + '"';
 		
