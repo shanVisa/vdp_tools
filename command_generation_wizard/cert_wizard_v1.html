@@ -375,6 +375,7 @@
 												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 													<h5> Key in actual path below <p class="green_text">(Ex: certs\myProject)</p></h5>
 												</div>
+												
 												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 													<input id="txtNewPath" type="text"/>
 												</div>
@@ -511,8 +512,15 @@
 												<p class="red_text">Please do not misplace the private key file after submitting the CSR file for signing. </p>
 											</div>
 											
+											<p class="grey_text"> Private key generation command. </p>
+											
 											<ul class="list-group">
 												<li id="csrcom1" class="list-group-item">1. <label id="csrOpt2Com1" class="com_text">  </label></li>
+												
+											</ul>
+											
+											<p class="grey_text"> CSR Generation command using above private key file.</p> <p class="green_text">Might require to add the -config attribute with OPENSSL configuration file path in to the command. </p>
+											<ul class="list-group">
 												<li id="csrcom2" class="list-group-item">2. <label id="csrOpt2Com2" class="com_text">  </label></li>
 											</ul>
 										</div>
