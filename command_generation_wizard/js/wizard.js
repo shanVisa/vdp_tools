@@ -356,7 +356,7 @@
 		
 	}
 	
-	/* Not in use yet */
+    /* Not in use yet */
 	function validateCSRInputDataFields(){
 			
 		var selectedEnv = $("#idEnv input[type='radio']:checked").val();
@@ -374,7 +374,8 @@
 		return true;
 		
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  
+		
+		
 		if(!re.test(email)){
 			showHideAlert("ERROR", 5, true, "Invalid email address format. Please go back to page 2 and key in a valid email address.");
 			$("#pg2_csr_email").addClass("input-validation-error");
@@ -384,8 +385,6 @@
 				$("#pg2_csr_email").removeClass("input-validation-error");
 			}
 		}
-		
-		
 		
 		return true;
 
