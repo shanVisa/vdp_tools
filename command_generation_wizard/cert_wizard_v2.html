@@ -81,73 +81,81 @@
 							<!--**********************************************************
 								CSR Creation Page 2
 							**************************************************************-->
-							
-							
-							<div id="pg2_csr" class="row">
-							
-								<div id="pg2_csr_heading" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:15px;">
-									<h3>Please key in the following for CSR creation</h3>
-								</div>
-								
-								<div id="pg2_csr_heading" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 " style="margin-bottom:15px;">
-									<div class="row" style="margin-left:15px; margin-right:15px;">
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 well well-sm inside_well_text">
-											Only following characters are allowed <br>
-											<li> Space character </li>
-											<li> Upper case A to Z </li>
-											<li> Lower case a to z </li>
-											<li> Digits 0-9 </li>
-											<li> Dash (-) </li>
+							<div  id="pg2_csr">
+								<div class="row">
+									<div id="pg2_csr_heading" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:15px;">
+										<h3>Please key in the following for CSR creation</h3>
+									</div>
+									
+									<div id="pg2_csr_heading" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 " style="margin-bottom:15px;">
+										<div class="row" style="margin-left:15px; margin-right:15px;">
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 well well-sm inside_well_text">
+												Only following characters are allowed <br>
+												<li> Space character </li>
+												<li> Upper case A to Z </li>
+												<li> Lower case a to z </li>
+												<li> Digits 0-9 </li>
+												<li> Dash (-) </li>
+											</div>
 										</div>
 									</div>
 								</div>
 								
+								<div class="row">
+									<div id="pg2_csr_heading_email" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-bottom:10px;">
+										<label for="pg2_csr_email"> Your (or company common) email address:</label>
+										<input id="pg2_csr_email" type="text" placeholder="Ex: email@domain.com" class="form-control" maxlength="50">
+									</div>
 								
-								<div id="pg2_csr_heading_email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;">
-									<label for="pg2_csr_email"> Your (or company common) email address:</label>
-									<input id="pg2_csr_email" type="text" placeholder="Ex: email@domain.com" class="form-control" maxlength="50">
-								</div>
-							
-								<div id="pg2_csr_heading_fqdn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;">
-									<label for="pg2_csr_fqdn"> Fully Qulaified Domain Name - <p class="text_fields_heading blue_text" style="display:inline;"> Wild cards and "www" not allowed </p></label>
-									<input id="pg2_csr_fqdn" type="text" placeholder="Format:- [host name].[domain name]  Ex: myserver1.mydomain.com.sg" class="form-control" maxlength="100">
-								</div>
-								
-								
-								<div id="pg2_csr_heading_Org" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;">
-									<label for="pg2_csr_org"> Organization Name</label>
-									<input id="pg2_csr_org" type="text" placeholder="Ex: Your Company Name" class="form-control" maxlength="30">
+									<div id="pg2_csr_heading_fqdn" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-bottom:10px;">
+										<label for="pg2_csr_fqdn"> Fully Qulaified Domain Name - <p class="text_fields_heading blue_text" style="display:inline;"> Wild cards and "www" not allowed </p></label>
+										<input id="pg2_csr_fqdn" type="text" placeholder="Format:- [host name].[domain name]  Ex: myserver1.mydomain.com.sg" class="form-control" maxlength="100">
+									</div>
 								</div>
 								
-								<div id="pg2_csr_heading_ou" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;">
-									<label for="pg2_csr_ou"> Organization Unit Name</label>
-									<input id="pg2_csr_ou" type="text" placeholder="Ex: Your Department/Section Name" class="form-control" maxlength="30">
-								</div>
-								
-								<div id="pg2_csr_heading_cc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;" >
-									<label for="pg2_csr_cc"> Two Character Country Code</label>
-									<input id="pg2_csr_cc" type="text" placeholder="Ex: SG" class="form-control" maxlength="2">
-								</div>
-								
-								<div id="pg2_csr_heading_st" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;">
-									<label for="pg2_csr_st"> State (Or region)</label>
-									<input id="pg2_csr_st" type="text" placeholder="Ex: East" class="form-control" maxlength="30">
-								</div>
-								
-								<div id="pg2_csr_heading_loc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;">
-									<label for="pg2_csr_loc"> Location (City Name)</label>
-									<input id="pg2_csr_loc" type="text" placeholder="Ex: Paya Lebar" class="form-control" maxlength="30">
-								</div>
-								
-								<div id="pg2_csr_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;">
-									<label for="pg2_csr_pass"> Password for the private key (and store [optional])
+								<div class="row">
+									<div id="pg2_csr_heading_Org" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-bottom:10px;">
+										<label for="pg2_csr_org"> Organization Name</label>
+										<input id="pg2_csr_org" type="text" placeholder="Ex: Your Company Name" class="form-control" maxlength="30">
+									</div>
 									
-									</label>
-									<input id="pg2_csr_pass" type="text" class="form-control" maxlength="20" placeholder="Key in at least 6 characters long password">
+									<div id="pg2_csr_heading_ou" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin-bottom:10px;">
+										<label for="pg2_csr_ou"> Organization Unit Name</label>
+										<input id="pg2_csr_ou" type="text" placeholder="Ex: Your Department/Section Name" class="form-control" maxlength="30">
+									</div>
 								</div>
+								
+								<div class="row">
+								
+									<div id="pg2_csr_heading_cc" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" style="margin-bottom:10px;" >
+										<label for="pg2_csr_cc"> Two Character Country Code</label>
+										<input id="pg2_csr_cc" type="text" placeholder="Ex: SG" class="form-control" maxlength="2">
+									</div>
+									
+									<div id="pg2_csr_heading_st" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" style="margin-bottom:10px;">
+										<label for="pg2_csr_st"> State (Or region)</label>
+										<input id="pg2_csr_st" type="text" placeholder="Ex: East" class="form-control" maxlength="30">
+									</div>
+									
+									<div id="pg2_csr_heading_loc" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" style="margin-bottom:10px;">
+										<label for="pg2_csr_loc"> Location (City Name)</label>
+										<input id="pg2_csr_loc" type="text" placeholder="Ex: Paya Lebar" class="form-control" maxlength="30">
+									</div>
+								
+								</div>
+								
+								<div class="row">
+									
+									
+									<div id="pg2_csr_password" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-bottom:10px;">
+										<label for="pg2_csr_pass"> Password for the private key (and store [optional])
+										
+										</label>
+										<input id="pg2_csr_pass" type="text" class="form-control" maxlength="20" placeholder="Key in at least 6 characters long password">
+									</div>
+								</div>
+							
 							</div>
-							
-							
 							
 							
 							
@@ -458,13 +466,13 @@
 											<h4> <p class="blue_text"> Option 1 - Using Java Keytool - </p> <p class="grey_text">Generate the Private Key and CSR File.</p> </h4>
 											
 											<div class="well well-sm inside_well_text" style="padding:1px;"> 
-												<li><p class="red_text">Please do not misplace the private key file after submitting the CSR file for signing. </p></li>
-												
-												<li><p class="red_text">JKS store password and Private key password is same. </p></li>
-												
-												<li><p class="red_text">Before execute any command please REMOVE any existing key store, csr files in the directory.</p></li>
-												
-												<li><p class="red_text">Commands should execute in order of appearance.</p></li>
+												<p class="red_text">Please do not misplace the private key file after submitting the CSR file for signing. </p>
+												<br>
+												<p class="red_text">JKS store password and Private key password is same. </p>
+												<br>
+												<p class="red_text">Before execute any command please REMOVE any existing key store, csr files in the directory.</p>
+												<br>
+												<p class="red_text">Commands should execute in order of appearance.</p>
 											</div>
 											
 											<ul class="list-group">
