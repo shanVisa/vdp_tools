@@ -6,7 +6,7 @@
 	Version : 1.0.0 
 	License : Free Version
 	Company : 
-	Warranty : Abosulute No Warranty. The Developer is not liable for 
+	Warranty : Absolute No Warranty. The Developer is not liable for 
 				any damages caused during the usage or by any of these scripts.
 				
 	Bugs :
@@ -35,18 +35,21 @@
 		if (navigator.userAgent.indexOf("Mac") != -1) pathDel="/";
 		
 		
-		document.getElementById(displayLblId).value   =  filePath.substring(0, filePath.lastIndexOf(pathDel) + 1);; //thefile.files[0].name;
+		document.getElementById(displayLblId).value   =  filePath.substring(0, filePath.lastIndexOf(pathDel) + 1); //thefile.files[0].name;
 		
 		
 		//alert(pathDel);
-		
-		
-		
+			
 	}
+	
+	
+	
+	
 	function showFile(fileButton, displayLblId){
 		var thefile = document.getElementById(fileButton);
 		document.getElementById(displayLblId).value   = thefile.value; //thefile.files[0].name;
 	}
+	
 	
 	function showHideAlert(alertType,pageNum, blShow, alertMsg){
 		
@@ -58,9 +61,11 @@
 			if(blShow){
 				
 				if(alertType == "ERROR"){
+					
 					var e = document.getElementById(errorAlertId);
 					e.style.display="block";
 					e.innerHTML = alertMsg;
+					
 				}
 				
 				if(alertType == "INFO"){
@@ -112,7 +117,8 @@
 		
 		var selectedEnv = $("#idEnv input[type='radio']:checked").val();
 		var email = $("#pg2_csr_email").val().trim();
-		var fqdn = $("#pg2_csr_fqdn").val().trim();
+		var hostName = $("#pg2_csr_hostname").val().trim(); //Added on 24th Nov  2017
+		var fqdn = $("#pg2_csr_fqdn").val().trim(); // This only contains domain name after 24th Nov 2017 change
 		var org = $("#pg2_csr_org").val().trim();
 		var orgUnit = $("#pg2_csr_ou").val().trim();
 		var cc = $("#pg2_csr_cc").val().trim();
@@ -159,6 +165,11 @@
 		}
 		
 		/* validate for special characters */
+		
+		if(inputRegEx.test(hostName)){
+			showHideAlert("ERROR", 5, true, "Server Name contains some invalid characters. Please go back to page 2 and correct it.");
+			return;
+		}
 		
 		if(inputRegEx.test(fqdn)){
 			showHideAlert("ERROR", 5, true, "Fully Qualified Domain Name contains some invalid characters. Please go back to page 2 and correct it.");
@@ -216,6 +227,10 @@
 		var openSSLCSRComTemplate = 'openssl req -new -sha256 -key [#filepath]' + selectedEnv + '_privatekey.pem -out [#filepath]' + selectedEnv + '_certreq1.csr -subj /CN=[#commonName]/OU=[#OrgUnit]/O=[#OrgName]/L=[#Location]/ST=[#State]/C=[#CC]/UID=[#uuid]-' + selectedEnv ;
 
 		
+		/*Combine hostname and domain name. Fqdn variable only contains the domain name after 24th Nov 2017 change when read the input field.
+			Therefore combine it with hostname.
+		*/
+		fqdn = hostName + "." + fqdn;
 		
 		/* Key tool */
 		$("#csrOpt1Com1").text(jksKeyStoreComTemplate.replace('[#filepath]', filePath).replace('[#password]', keyAndStorePass).replace('[#commonName]', fqdn).replace('[#OrgUnit]', orgUnit).replace('[#OrgName]', org).replace('[#Location]', loc).replace('[#State]', state).replace('[#CC]', cc).replace('[#uuid]', uuid).replace('[#password]', keyAndStorePass));
@@ -243,6 +258,7 @@
 		
 		temp = "";
 		temp = replaceAll('[#filepath]', filePath, openSSLCSRComTemplate);
+		
 		
 		$("#csrOpt2Com2").text(temp.replace('[#commonName]', fqdn).replace('[#OrgUnit]', orgUnit).replace('[#OrgName]', org).replace('[#Location]', loc).replace('[#State]', state).replace('[#CC]', cc).replace('[#uuid]', uuid));
 		
@@ -361,6 +377,7 @@
 			
 		var selectedEnv = $("#idEnv input[type='radio']:checked").val();
 		var email = $("#pg2_csr_email").val().trim();
+		var hostName = $("#pg2_csr_hostname").val().trim();
 		var fqdn = $("#pg2_csr_fqdn").val().trim();
 		var org = $("#pg2_csr_org").val().trim();
 		var orgUnit = $("#pg2_csr_ou").val().trim();
@@ -426,7 +443,6 @@ $(document).ready(function() {
 			$("#JKScomsPanel").hide();
 			$("#CSRcomsPanel").hide();
 			
-			
 		});
 		
 		/*
@@ -439,7 +455,7 @@ $(document).ready(function() {
 			var LastTab = $(e.relatedTarget).text(); // get last tab
 			var selectedEnv = $("#idEnv input[type='radio']:checked").val();
 			var selectedOp = $("#idOperation input[type='radio']:checked").val();
-		
+			
 			
 			/* Hide all the alerts */
 			hideAllAlerts(currentTab);
@@ -487,6 +503,7 @@ $(document).ready(function() {
 						$("#pg2_cert_store").hide();
 						
 					}else{
+						
 						$("#pg2_csr").hide();
 						$("#pg2_cert_store").show();
 					}
@@ -508,8 +525,7 @@ $(document).ready(function() {
 					
 				}else{
 					
-					
-					
+
 					/* Show cert store speific info and hide csr specific info */
 					if(selectedOp == "CSR"){
 						
@@ -549,7 +565,7 @@ $(document).ready(function() {
 				
 				
 			}else if(currentTab==5){
-				
+				hideAllAlerts(5);
 			}
 		});
 		
@@ -592,12 +608,26 @@ $(document).ready(function() {
 		});
 		
 		
+		/****************************************
+		  Replace full path check box event
+		*****************************************/
 		
+		$("#idChkReplaceFullpath").click(function(){
+			if($("#idChkReplaceFullpath").is(":checked")){
+				$("#idBtnReplaceFakePath").html("Replace Full Path");
+			}else{
+				$("#idBtnReplaceFakePath").html("Replace Fakepath");
+			}
+		});
 		
 		/**********************************
 		fakepath replacement button event 
 		***********************************/
 		$("#idBtnReplaceFakePath").click(function(){
+			
+			var replaceFullPath = $("#idChkReplaceFullpath").is(":checked");
+			var findVal = "fakepath";
+			
 			var newPath = $("#txtNewPath").val();
 			
 			var valCom1 = $("#oslstep1com1").text();
@@ -611,16 +641,29 @@ $(document).ready(function() {
 			var com4 = $("#lcom4").text();
 			var com5 = $("#lcom5").text();
 			
-			$("#oslstep1com1").text(replaceAll('fakepath',newPath, valCom1));
-			$("#oslstep1com2").text(replaceAll('fakepath',newPath, valCom2));
+			/* Get full path upto the start of file name and replace it with the textbox value */
+			if(replaceFullPath){
+				
+				var rootCertFilePathName = document.getElementById('RootCertFile').value;
+				var pathDel = "/";
+				
+				if (navigator.userAgent.indexOf("Win") != -1) pathDel = "\\";
+				if (navigator.userAgent.indexOf("Mac") != -1) pathDel="/";
+		
+				findVal = rootCertFilePathName.substring(0, rootCertFilePathName.lastIndexOf(pathDel) + 1);
+		
+			}
 			
-			$("#oslcom1").text(replaceAll('fakepath', newPath, convertPKCS12Com));
+			$("#oslstep1com1").text(replaceAll(findVal,newPath, valCom1));
+			$("#oslstep1com2").text(replaceAll(findVal,newPath, valCom2));
 			
-			$("#lcom1").text(replaceAll('fakepath', newPath, com1));
-			$("#lcom2").text(replaceAll('fakepath', newPath, com2));
-			$("#lcom3").text(replaceAll('fakepath', newPath, com3));
-			$("#lcom4").text(replaceAll('fakepath', newPath, com4));
-			$("#lcom5").text(replaceAll('fakepath', newPath, com5));
+			$("#oslcom1").text(replaceAll(findVal, newPath, convertPKCS12Com));
+			
+			$("#lcom1").text(replaceAll(findVal, newPath, com1));
+			$("#lcom2").text(replaceAll(findVal, newPath, com2));
+			$("#lcom3").text(replaceAll(findVal, newPath, com3));
+			$("#lcom4").text(replaceAll(findVal, newPath, com4));
+			$("#lcom5").text(replaceAll(findVal, newPath, com5));
 			
 			/* hide the step 0 section */
 			$("#pg5_step0").hide();
